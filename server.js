@@ -1,15 +1,29 @@
 const express = require('express');
+const env = require("dotenv").config()
+const app = express()
+const {manKelsier} = require('./controllers/index.js');
 
-const app = express();
+// routes.get('/', nameController1.callingName1);
 
-const port = 8080;
 
-app.get('/professional', (req, res) => {
-    res.send('hellow world')
-}); 
-// app.use('/', require('./routes'));
+const port = process.env.PORT
+const host = process.env.HOST
+
 
 app.listen(port, () => {
-    console.log(`Server is running on this port: ${port}`);
+  console.log(`app listening on ${host}:${port}`)
+})
 
-});
+app
+//   .use(bodyParser.json())
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  });
+//   .use('/professional', professionalRoutes);
+
+app.get('/professional', manKelsier
+    
+); 
+
+
