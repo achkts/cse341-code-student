@@ -1,6 +1,9 @@
 const express = require('express');
-const env = require("dotenv").config()
-const app = express()
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+dotenv.config();
+
+const app = express();
 const {manKelsier} = require('./controllers/index');
 const contactRoute = require('./routes/contacts');
 
@@ -16,7 +19,9 @@ app.listen(port, () => {
 })
 
 app
-//   .use(bodyParser.json())
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
+
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();

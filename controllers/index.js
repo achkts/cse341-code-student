@@ -1,10 +1,4 @@
-// const callingName1 = (req, res, next) => {
-//     res.send('Don Hillis');
-// };
-
-// module.exports = { callingName1 };
-
-const manKelsier = (req, res, next) => {
+const manKelsier = (req, res) => {
     res.json({
         professionalName:'Audrey Checketts',
         nameLink:{firstName:'Kelsier', url:'https://www.dragonsteel.com'},

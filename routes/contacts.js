@@ -1,10 +1,12 @@
 const routes = require('express').Router();
 const contacts = require('../controllers/contacts');
 
-const mongoDB = require('../controllers/mongodb');
-
 routes.get('/', contacts.getContacts);
 routes.get('/:id', contacts.getSingleContact);
+
+routes.post('/', contacts.createContact);
+routes.put('/:id', contacts.updateContact);
+routes.delete('/:id', contacts.deleteContact);
 
 
 module.exports = routes;

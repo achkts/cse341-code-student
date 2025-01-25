@@ -1,6 +1,7 @@
 const {MongoClient} = require('mongodb');
 
 
+
 async function getClient() {
     const mongoConnect1 = process.env.MONGO
 
@@ -19,14 +20,14 @@ async function getClient() {
         console.error(e);
     } 
 }
-
+// 
 getClient().catch(console.error);
 
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
+// async function listDatabases(client){
+//     databasesList = await client.db().admin().listDatabases();
  
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+//     console.log("Databases:");
+//     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+// };
 
 module.exports = { getClient }

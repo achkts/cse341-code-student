@@ -5,3 +5,27 @@ GET http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts HTTP/1.1
 
 ###
 GET http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/678c3fe2675f6462b8fd0e85 HTTP/1.1
+
+###
+POST http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName" : "Tony",
+    "birthday" : "04-17-1972",
+    "email" : "starkt@starlink.com",
+    "favoriteColor" : "purple",
+    "lastName" : "Stark"
+}
+
+###
+PUT http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/678c3fe2675f6462b8fd0e85 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName" : "Kaladin Darkeyes"
+}
+
+###
+DELETE http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/679461cbf0e2752754567197 HTTP/1.1
+Content-Type: application/json
