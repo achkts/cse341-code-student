@@ -19,13 +19,13 @@ Content-Type: application/json
 }
 
 ###
-PUT http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/678c3fe2675f6462b8fd0e85 HTTP/1.1
+PUT http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/6794788a710caec05f524852 HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName" : "Kaladin Darkeyes"
+    "firstName" : "Tony Hawkeye"
 }
 
 ###
-DELETE http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/679461cbf0e2752754567197 HTTP/1.1
+DELETE http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/6794788a710caec05f524852 HTTP/1.1
 Content-Type: application/json
