@@ -43,7 +43,7 @@ const createContact = async (req, res) => {
         const result = await myColl.insertOne(contactJson)
     
 
-        res.send(result.insertedId)
+        res.status(201).send(result.insertedId)
 
     } catch(e) {
         res.send(e.message);

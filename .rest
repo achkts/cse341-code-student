@@ -1,13 +1,16 @@
-GET http://{{$dotenv HOST}}:{{$dotenv PORT}}/professional HTTP/1.1
+@host = https://cse341-code-student-ccpz.onrender.com
+# @host = http://localhost:8080
+
+GET {{host}}/professional HTTP/1.1
 
 ###
-GET http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts HTTP/1.1
+GET {{host}}/contacts HTTP/1.1
 
 ###
-GET http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/678c3fe2675f6462b8fd0e85 HTTP/1.1
+GET {{host}}/contacts/678c3fe2675f6462b8fd0e85 HTTP/1.1
 
 ###
-POST http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts HTTP/1.1
+POST {{host}}/contacts HTTP/1.1
 Content-Type: application/json
 
 {
@@ -19,7 +22,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/6794788a710caec05f524852 HTTP/1.1
+PUT {{host}}/contacts/6794788a710caec05f524852 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -27,5 +30,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://{{$dotenv HOST}}:{{$dotenv PORT}}/contacts/6794788a710caec05f524852 HTTP/1.1
+DELETE {{host}}/contacts/6794788a710caec05f524852 HTTP/1.1
 Content-Type: application/json
