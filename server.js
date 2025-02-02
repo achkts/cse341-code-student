@@ -32,7 +32,7 @@ app
     next();
   })
 
-  .use('/contacts', contactRoute);
+  .use('/', contactRoute);
 
 app.get('/professional', manKelsier
     
