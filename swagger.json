@@ -22,6 +22,39 @@
       },
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Contact data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "Tony"
+                },
+                "birthday": {
+                  "type": "string",
+                  "example": "04-17-1972"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "starkt@starlink.com"
+                },
+                "favoriteColor": {
+                  "type": "string",
+                  "example": "purple"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Stark"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

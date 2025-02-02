@@ -32,6 +32,18 @@ const requireField = (obj, fieldName) => {
 
 const createContact = async (req, res) => {
     const contactJson = req.body;
+    /* #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Contact data',
+        required: true,
+        schema: {
+            "firstName" : "Tony",
+            "birthday" : "04-17-1972",
+            "email" : "starkt@starlink.com",
+            "favoriteColor" : "purple",
+            "lastName" : "Stark"
+        }
+    } */
     try {
         requireField(contactJson, 'firstName');
         requireField(contactJson, 'lastName');
