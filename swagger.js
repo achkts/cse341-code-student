@@ -10,7 +10,8 @@ const doc = {
     description: 'Swagger Contacts API'
   },
   // host: `${host}:${port}`
-  host: 'https://cse341-code-student-ccpz.onrender.com/'
+  host: 'cse341-code-student-ccpz.onrender.com/',
+  schemes: ['https']
 };
 
 const outputFile = './swagger.json';
