@@ -10,7 +10,7 @@ const doc = {
     description: 'Swagger Contacts API'
   },
   // host: `${host}:${port}`
-  host: 'cse341-code-student-ccpz.onrender.com/',
+  host: 'cse341-code-student-ccpz.onrender.com',
   schemes: ['https']
 };
 

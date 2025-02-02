@@ -5,7 +5,7 @@
     "description": "Swagger Contacts API",
     "version": "1.0.0"
   },
-  "host": "cse341-code-student-ccpz.onrender.com/",
+  "host": "cse341-code-student-ccpz.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
