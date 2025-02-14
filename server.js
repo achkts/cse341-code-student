@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger.json');
 
+
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -11,7 +12,6 @@ const app = express();
 const {manKelsier} = require('./controllers/index');
 const contactRoute = require('./routes/contacts');
 
-// routes.get('/', nameController1.callingName1);
 
 
 const port = process.env.PORT
@@ -37,5 +37,22 @@ app
 app.get('/professional', manKelsier
     
 ); 
+
+app.get('/', function(req, res, next) {
+  res.redirect('/api-docs')
+});
+
+app.use(async (req, res, next) => {
+  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+})
+
+app.use(async (err, req, res, next) => {
+  
+  let message = '';
+  if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  res.status(err.status || 500).json({
+    message: message
+  })
+})
 
 

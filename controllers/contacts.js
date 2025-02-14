@@ -1,29 +1,19 @@
 const { ObjectId } = require("mongodb");
-const mongoDB = require("./mongodb");
+const contact = require('../models/contactModel');
 
 
 const getContacts = async (req, res) => {
-     const myColl = await mongoDB.getClient();
-     const projection = { _id: 1, firstName: 1, lastName: 1, email: 1, favoriteColor: 1, birthday: 1 };
-        const cursor = myColl.find().project(projection);
-        const results = [];
-        for await (const doc of cursor) {
-            results.push(doc);
-            
-        }
-        res.json(results);
+        const allContacts = await contact.find({}).exec();
+
+        res.json(allContacts);
 }
 
 const getSingleContact = async (req, res) => {
     const id = req.params.id;
-    const myColl = await mongoDB.getClient();
-    const options = {
-        projection: { _id: 0, firstName: 1 },
-    };
+    const singleContact = await contact.findById(id);
+
+  res.json(singleContact);
   
-  const findResult = await myColl.findOne({_id: new ObjectId(id)}, options);
-  res.json(findResult);
-  console.log(id, findResult)
 }
 
 const requireField = (obj, fieldName) => {
@@ -45,20 +35,18 @@ const createContact = async (req, res) => {
         }
     } */
     try {
-        requireField(contactJson, 'firstName');
-        requireField(contactJson, 'lastName');
-        requireField(contactJson, 'email');
-        requireField(contactJson, 'birthday');
-        requireField(contactJson, 'favoriteColor');
+        const newContact = new contact(contactJson);
+        const result = await newContact.save();
+        console.log('created', result)
 
-        const myColl = await mongoDB.getClient();
-        const result = await myColl.insertOne(contactJson)
-    
-
-        res.status(201).send(result.insertedId)
+        res.status(201).send(result._id)
 
     } catch(e) {
-        res.send(e.message);
+        const messages = [];
+        for(const key in e.errors) {
+            messages.push(e.errors[key].message);
+        }
+        res.status(400).json(messages);
     }
 }
 
@@ -66,11 +54,9 @@ const updateContact = async (req, res) => {
     const contactJson = req.body;
     const id = req.params.id;
     try {
-        const myColl = await mongoDB.getClient();
-        const result = await myColl.updateOne(
-            { _id: new ObjectId(id) },
-            { $set: contactJson }
-        );
+        const filter = { _id: new ObjectId(id) };
+        const result = await contact.updateOne(filter, contactJson);
+       
         
         if (result.matchedCount === 0) {
             return res.status(404).json({ message: "Contact not found" });
@@ -86,11 +72,9 @@ const updateContact = async (req, res) => {
 const deleteContact = async (req, res) => {
     const id = req.params.id;
     try {
-        const myColl = await mongoDB.getClient();
-        const result = await myColl.deleteOne(
-            { _id: new ObjectId(id) }
-        );
-        
+        const filter = { _id: new ObjectId(id) };
+        const result = await contact.deleteOne(filter);
+    
         if (result.deletedCount === 0) {
             return res.status(404).json({ message: "Contact not found" });
         }
